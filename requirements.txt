@@ -1,2 +1,5 @@
 python-telegram-bot
 requests
+cv2
+numpy
+tflearn
