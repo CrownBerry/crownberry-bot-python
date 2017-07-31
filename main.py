@@ -1,5 +1,4 @@
-from telegram.ext import Updater
-from telegram.ext import CommandHandler
+from telegram.ext import Updater, MessageHandler, Filters, CommandHandler
 import logging
 from Handlers.handler import MainHandlers
 
@@ -11,7 +10,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 start_handler = CommandHandler('start', MainHandlers.start)
 btc_handler = CommandHandler('btc', MainHandlers.btc)
-cod_handler = CommandHandler('catordog', MainHandlers.cat_or_dog)
+cod_handler = MessageHandler(Filters.photo, MainHandlers.cat_or_dog)
 
 dispatcher.add_handler(start_handler)
 dispatcher.add_handler(btc_handler)
