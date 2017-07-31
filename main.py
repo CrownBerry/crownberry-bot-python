@@ -9,7 +9,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 
 def start(bot, update):
-    bot.send_message(chat_id=update.message.chat_id, text="I'm bot, and I'm not ready yet")
+    bot.send_message(chat_id=update.message.chat_id, text="I'm bot, and I'm not ready yet, but I deployed with docker-compose")
 
 
 start_handler = CommandHandler('start', start)
