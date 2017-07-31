@@ -1,4 +1,7 @@
 from Services.CoinRate import CoinRate
+from Services.MyOwnCNN import MyOwnCNN
+
+from main import model
 
 
 class MainHandlers:
@@ -19,4 +22,8 @@ class MainHandlers:
     def cat_or_dog(bot, update):
         pic_id = update.message.photo[-1].file_id
         new_file = bot.get_file(pic_id)
-        new_file.download('pic.jpg')
+        str_pic = 'pic.jpg'
+        new_file.download(str_pic)
+        animal_name = MyOwnCNN.who_is_it(model, str_pic)
+        bot.send_message(chat_id=update.message.chat_id,
+                         text=animal_name)
