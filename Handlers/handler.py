@@ -1,3 +1,6 @@
+from Services.CoinRate import CoinRate
+
+
 class MainHandlers:
     @staticmethod
     def start(bot, update):
@@ -6,5 +9,6 @@ class MainHandlers:
 
     @staticmethod
     def btc(bot, update):
+        current_price = CoinRate.getRate("btc")
         bot.send_message(chat_id=update.message.chat_id,
-                         text="Soon I will be aknowledge about bitcoins and etherium rate! ^_^")
+                         text="1 BTC = " + current_price)
