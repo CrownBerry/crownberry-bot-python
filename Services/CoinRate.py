@@ -9,5 +9,5 @@ class CoinRate:
         request = requests.get(cls.URL_STRING + cur + "-usd")
         response = request.json()
         rate = round(float(response['ticker']['price']),2)
-        return rate
+        return str(rate)
 
