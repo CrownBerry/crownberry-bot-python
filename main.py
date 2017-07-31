@@ -1,7 +1,7 @@
 from telegram.ext import Updater
 from telegram.ext import CommandHandler
 import logging
-from handlers.handler import MainHandlers
+from handlers.handler import *
 
 updater = Updater(token="420905549:AAHb1OstzqlLiwGQegNGP27UO1uoS4Jpw5g")
 dispatcher = updater.dispatcher
