@@ -2,6 +2,7 @@ from telegram.ext import Updater, MessageHandler, Filters, CommandHandler
 import logging
 from Handlers.handler import MainHandlers
 from Services import MyOwnCNN
+import config
 
 updater = Updater(token="420905549:AAHb1OstzqlLiwGQegNGP27UO1uoS4Jpw5g")
 dispatcher = updater.dispatcher
@@ -20,4 +21,5 @@ dispatcher.add_handler(cod_handler)
 model = MyOwnCNN.MyOwnCNN.init_model()
 
 if __name__ == '__main__':
+    config.init()
     updater.start_polling()
