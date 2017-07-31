@@ -5,6 +5,7 @@ import tflearn
 from tflearn.layers.conv import conv_2d, max_pool_2d
 from tflearn.layers.core import input_data, dropout, fully_connected
 from tflearn.layers.estimator import regression
+import config
 
 class MyOwnCNN:
 
@@ -33,15 +34,13 @@ class MyOwnCNN:
         convnet = fully_connected(convnet, 2, activation='softmax')
         convnet = regression(convnet, optimizer='adam', learning_rate=LR, loss='categorical_crossentropy',
                              name='targets')
-        model = tflearn.DNN(convnet, tensorboard_dir='log')
+        config.model = tflearn.DNN(convnet, tensorboard_dir='log')
 
         if os.path.exists('{}.meta'.format(MODEL_NAME)):
-            model.load(MODEL_NAME)
-
-        return model
+            config.model.load(MODEL_NAME)
 
     @staticmethod
-    def who_is_it(model, str_pic):
+    def who_is_it(str_pic):
         file_data = []
         path = os.path.join("./", str_pic)
         img = cv2.imread(path, cv2.IMREAD_GRAYSCALE)
@@ -50,7 +49,7 @@ class MyOwnCNN:
         for num, data in enumerate(file_data):
             img_data = data[0]
             data = img_data.reshape(50, 50, 1)
-            model_out = model.predict([data])[0]
+            model_out = config.model.predict([data])[0]
             if np.argmax(model_out) == 1:
                 str_label = 'Dog'
             else:
