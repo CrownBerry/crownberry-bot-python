@@ -17,6 +17,6 @@ class MainHandlers:
 
     @staticmethod
     def cat_or_dog(bot, update):
-        pic_id = update.message.photo[-1]
+        pic_id = update.message.photo[-1].file_id
         new_file = bot.get_file(pic_id)
         new_file.download('pic.jpg')
