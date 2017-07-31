@@ -7,4 +7,4 @@ class MainHandlers:
     @staticmethod
     def btc(bot, update):
         bot.send_message(chat_id=update.message.chat_id,
-                         text="Soon I will be aknowledge about bitcoins and etherium rate!")
+                         text="Soon I will be aknowledge about bitcoins and etherium rate! ^_^")
