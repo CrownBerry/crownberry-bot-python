@@ -9,6 +9,8 @@ class MainHandlers:
 
     @staticmethod
     def btc(bot, update):
-        current_price = CoinRate.getRate("btc")
+        btc_price = CoinRate.getRate("btc")
+        eth_price = CoinRate.getRate("eth")
         bot.send_message(chat_id=update.message.chat_id,
-                         text="1 BTC = " + current_price)
+                         text="1 BTC = " + btc_price + "\n" +
+                         "1 ETH = " + eth_price)
