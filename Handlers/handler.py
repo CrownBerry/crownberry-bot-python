@@ -14,3 +14,9 @@ class MainHandlers:
         bot.send_message(chat_id=update.message.chat_id,
                          text="1 BTC = " + btc_price + "\n" +
                          "1 ETH = " + eth_price)
+
+    @staticmethod
+    def cat_or_dog(bot, update):
+        pic_id = update.message.photo[-1]
+        new_file = bot.get_file(pic_id)
+        new_file.download('pic.jpg')
