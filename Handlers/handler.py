@@ -23,6 +23,6 @@ class MainHandlers:
         new_file = bot.get_file(pic_id)
         str_pic = 'pic.jpg'
         new_file.download(str_pic)
-        animal_name = MyOwnCNN.who_is_it(config.model, str_pic)
+        animal_name = MyOwnCNN.who_is_it(str_pic)
         bot.send_message(chat_id=update.message.chat_id,
                          text=animal_name)
