@@ -1,7 +1,7 @@
 from telegram.ext import Updater, MessageHandler, Filters, CommandHandler
 import logging
 from Handlers.handler import MainHandlers
-from Services import  MyOwnCNN
+from Services import MyOwnCNN
 
 updater = Updater(token="420905549:AAHb1OstzqlLiwGQegNGP27UO1uoS4Jpw5g")
 dispatcher = updater.dispatcher

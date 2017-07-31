@@ -1,6 +1,5 @@
 from Services.CoinRate import CoinRate
 from Services.MyOwnCNN import MyOwnCNN
-
 from main import model
 
 
