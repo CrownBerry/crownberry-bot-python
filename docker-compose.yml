@@ -1,0 +1,8 @@
+version: "3"
+services:
+    crownberry_bot:
+        build:
+            context: .
+            dockerfile: ./Dockerfile
+        command: python3.6 main.py
+        restart: always
