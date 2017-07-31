@@ -9,8 +9,8 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
                     level=logging.INFO)
 
 
-start_handler = CommandHandler('start', MainHandlers.start())
-btc_handler = CommandHandler('btc', MainHandlers.btc())
+start_handler = CommandHandler('start', start())
+btc_handler = CommandHandler('btc', btc())
 
 
 dispatcher.add_handler(start_handler)
