@@ -15,9 +15,9 @@ class MainHandlers:
         bcc_prrice = CoinRate.get_rate("bcc")
         eth_price = CoinRate.get_rate("eth")
         bot.send_message(chat_id=update.message.chat_id,
-                         text="1 BTC = " + btc_price + "$\n" +
-                         "1 BCC = " + bcc_prrice + "$\n" +
-                         "1 ETH = " + eth_price + "$")
+                         text="1 BTC = $" + btc_price + "\n" +
+                         "1 BCC = $" + bcc_prrice + "\n" +
+                         "1 ETH = $" + eth_price)
 
     @staticmethod
     def cat_or_dog(bot, update):
