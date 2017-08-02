@@ -6,3 +6,5 @@ services:
             dockerfile: ./Dockerfile
         command: python3.6 main.py
         restart: always
+        depends_on:
+            - "builder"
