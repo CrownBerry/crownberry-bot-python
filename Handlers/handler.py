@@ -7,7 +7,7 @@ class MainHandlers:
     @staticmethod
     def start(bot, update):
         bot.send_message(chat_id=update.message.chat_id,
-                         text="I'm bot and I can tell you current exchange rate of BTC v0.01")
+                         text="I'm bot and I can tell you current exchange rate of BTC v0.02")
 
     @staticmethod
     def btc(bot, update):
