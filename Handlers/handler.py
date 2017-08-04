@@ -44,7 +44,7 @@ class MainHandlers:
     @staticmethod
     def get_top_word(bot, update):
         try:
-            item_name = max(config.list_of_word.iteritems(), key=operator.itemgetter(1))[0]
+            max(config.list_of_word, key=lambda k: config.list_of_word[k])
         except Exception as e:
             item_name = str(e)
         bot.send_message(chat_id=update.message.chat_id,
