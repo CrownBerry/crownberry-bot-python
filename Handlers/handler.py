@@ -43,6 +43,9 @@ class MainHandlers:
 
     @staticmethod
     def get_top_word(bot, update):
-        item_name = max(config.list_of_word.iteritems(), key=operator.itemgetter(1))[0]
+        try:
+            item_name = max(config.list_of_word.iteritems(), key=operator.itemgetter(1))[0]
+        except:
+            item_name = ""
         bot.send_message(chat_id=update.message.chat_id,
                          text="Most common word in our conversation now is: " + item_name)
