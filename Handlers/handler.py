@@ -1,4 +1,7 @@
+import operator
+
 from Services.CoinRate import CoinRate
+from Services.DTO import DTO
 from Services.MyOwnCNN import MyOwnCNN
 import config
 
@@ -16,8 +19,8 @@ class MainHandlers:
         eth_price = CoinRate.get_rate("eth")
         bot.send_message(chat_id=update.message.chat_id,
                          text="1 BTC = $" + btc_price + "\n" +
-                         "1 BCC = $" + bcc_prrice + "\n" +
-                         "1 ETH = $" + eth_price)
+                              "1 BCC = $" + bcc_prrice + "\n" +
+                              "1 ETH = $" + eth_price)
 
     @staticmethod
     def cat_or_dog(bot, update):
@@ -28,3 +31,18 @@ class MainHandlers:
         animal_name = MyOwnCNN.who_is_it(str_pic)
         bot.send_message(chat_id=update.message.chat_id,
                          text=animal_name)
+
+    @staticmethod
+    def save_in_memory(bot, update):
+        word_list = update.message.text.split()
+        for w in word_list:
+            if DTO[w] is not None:
+                DTO[w] = DTO[w] + 1
+            else:
+                DTO[w] = 1
+
+    @staticmethod
+    def get_top_word(bot, update):
+        item_name = max(DTO.iteritems(), key=operator.itemgetter(1))[0]
+        bot.send_message(chat_id=update.message.chat_id,
+                         text="Most common word in our conversation now is: " + item_name)
