@@ -36,13 +36,13 @@ class MainHandlers:
     def save_in_memory(bot, update):
         word_list = update.message.text.split()
         for w in word_list:
-            if config.dto[w] is not None:
-                config.dto[w] = config.dto[w] + 1
+            if config.list_of_word[w] is not None:
+                config.list_of_word[w] = config.list_of_word[w] + 1
             else:
-                config.dto[w] = 1
+                config.list_of_word[w] = 1
 
     @staticmethod
     def get_top_word(bot, update):
-        item_name = max(config.dto.iteritems(), key=operator.itemgetter(1))[0]
+        item_name = max(config.list_of_word.iteritems(), key=operator.itemgetter(1))[0]
         bot.send_message(chat_id=update.message.chat_id,
                          text="Most common word in our conversation now is: " + item_name)

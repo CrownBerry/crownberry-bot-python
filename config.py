@@ -9,5 +9,5 @@ def init():
     global model
     global tg_token
     tg_token = config['DEFAULT']['tgToken']
-    global dto
-    dto = DTO()
+    global list_of_word
+    list_of_word = {}
