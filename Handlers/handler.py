@@ -36,10 +36,10 @@ class MainHandlers:
     def save_in_memory(bot, update):
         word_list = update.message.text.split()
         for w in word_list:
-            if config.list_of_word[w] is not None:
-                config.list_of_word[w] = config.list_of_word[w] + 1
-            else:
+            if not w in config.list_of_word:
                 config.list_of_word[w] = 1
+            else:
+                config.list_of_word[w] += 1
 
     @staticmethod
     def get_top_word(bot, update):
