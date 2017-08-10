@@ -36,6 +36,8 @@ def topword_saving(bot, update):
 
 def get_topword(bot, update, args):
     user = args.Split()[0]
+    if user == '':
+        user = update.message.from_user.username
     answer = config.topwords.get_topword(user)
     bot.send_message(chat_id=update.message.chat_id,
                      text=answer)
