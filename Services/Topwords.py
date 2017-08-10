@@ -9,6 +9,7 @@ class Topwords:
 
     def add_word(self, word, user):
         if user not in self.dictionary:
+            self.dictionary[user] = {}
             self.dictionary[user][word] = 1
         else:
             if word not in self.dictionary[user]:
@@ -23,6 +24,7 @@ class Topwords:
     def get_topword(self, user):
         try:
             topword = max(self.dictionary[user].items(), key=operator.itemgetter(1))[0]
-            return "Topword of " + user + " user is: " + topword
+            times = self.dictionary[user][topword]
+            return "Topword of " + user + " user is: " + topword + ", " + times + " times"
         except:
             return "There is no user with " + user + " username"
