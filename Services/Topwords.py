@@ -26,5 +26,6 @@ class Topwords:
             topword = max(self.dictionary[user].items(), key=operator.itemgetter(1))[0]
             times = self.dictionary[user][topword]
             return "Topword of " + user + " user is: " + topword + ", " + times + " times"
-        except:
-            return "There is no user with " + user + " username"
+        except Exception as e:
+            # return "There is no user with " + user + " username"
+            return str(e)
