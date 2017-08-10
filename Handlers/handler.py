@@ -35,7 +35,7 @@ def topword_saving(bot, update):
 
 
 def get_topword(bot, update, args):
-    user = args.Split()[0]
+    user = args[0]
     if user == '':
         user = update.message.from_user.username
     answer = config.topwords.get_topword(user)
