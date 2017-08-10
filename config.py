@@ -1,9 +1,10 @@
 import configparser
 
+from Services.MyOwnCNN import MyOwnCNN
 
-def init():
-    config = configparser.ConfigParser()
-    config.read('config.ini')
-    global model
-    global tg_token
-    tg_token = config['DEFAULT']['tgToken']
+config = configparser.ConfigParser()
+config.read('config.ini')
+
+
+myConvolutionalNeuralNetwork = MyOwnCNN()
+tg_token = config['DEFAULT']['tgToken']
