@@ -23,6 +23,7 @@ class Topwords:
 
     def get_topword(self, user):
         try:
+            print(self.dictionary[user])
             topword = max(self.dictionary[user].items(), key=operator.itemgetter(1))[0]
             times = self.dictionary[user][topword]
             return "Topword of " + user + " user is: " + topword + ", " + times + " times"
