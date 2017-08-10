@@ -26,3 +26,16 @@ def cat_or_dog(bot, update):
     animal_name = config.myConvolutionalNeuralNetwork.recongnize(str_pic=str_pic)
     bot.send_message(chat_id=update.message.chat_id,
                      text=animal_name)
+
+
+def topword_saving(bot, update):
+    user = update.message.from_user.username
+    message = update.message.text
+    config.topwords.add_word(user, message)
+
+
+def get_topword(bot, update, args):
+    user = args.Split()[0]
+    answer = config.topwords.get_topword(user)
+    bot.send_message(chat_id=update.message.chat_id,
+                     text=answer)
