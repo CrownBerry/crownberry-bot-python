@@ -8,11 +8,14 @@ class Topwords:
         self.dictionary = {'all': {}}
 
     def add_word(self, word, user):
-        if self.dictionary[user][word] is None:
+        if user not in self.dictionary:
             self.dictionary[user][word] = 1
         else:
-            self.dictionary[user][word] += 1
-        if self.dictionary['all'][word] is None:
+            if word not in self.dictionary[user]:
+                self.dictionary[user][word] = 1
+            else:
+                self.dictionary[user][word] += 1
+        if word not in self.dictionary['all']:
             self.dictionary['all'][word] = 1
         else:
             self.dictionary['all'][word] += 1
