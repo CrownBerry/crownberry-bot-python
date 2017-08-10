@@ -5,7 +5,7 @@ class Topwords:
     dictionary = {}
 
     def __init__(self):
-        self.dictionary = {'all': {}}
+        self.dictionary = {'all': {'': 0}}
 
     def add_word(self, word, user):
         if user not in self.dictionary:
