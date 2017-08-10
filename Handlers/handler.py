@@ -32,7 +32,7 @@ def topword_saving(bot, update):
     user = update.message.from_user.username
     message = update.message.text
     for word in message.split():
-        config.topwords.add_word(user, word)
+        config.topwords.add_word(word, user)
 
 
 def get_topword(bot, update, args):
