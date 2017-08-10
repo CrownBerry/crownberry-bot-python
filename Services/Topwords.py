@@ -20,13 +20,11 @@ class Topwords:
             self.dictionary['all'][word] = 1
         else:
             self.dictionary['all'][word] += 1
-        print(self.dictionary[user])
 
     def get_topword(self, user):
-        try:
-            topword = max(self.dictionary[user].items(), key=operator.itemgetter(1))[0]
+        if user in self.dictionary:
+            topword = max(self.dictionary[user], key=self.dictionary[user].get)
             times = self.dictionary[user][topword]
-            return "Topword of " + user + " user is: " + topword + ", " + times + " times"
-        except Exception as e:
-            # return "There is no user with " + user + " username"
-            return str(e)
+            return "Topword of " + user + " user is: " + topword + ", " + str(times) + " times"
+        else:
+            return "There is no user with " + user + " username"

@@ -40,6 +40,7 @@ def get_topword(bot, update, args):
         user = args[0]
     except:
         user = update.message.from_user.username
+    print(user)
     answer = config.topwords.get_topword(user)
     bot.send_message(chat_id=update.message.chat_id,
                      text=answer)
