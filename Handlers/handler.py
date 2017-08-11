@@ -32,7 +32,7 @@ def topword_saving(bot, update):
     user = update.message.from_user.username
     message = update.message.text
     for word in message.split():
-        if word.len() > 2:
+        if len(word) > 2:
             config.topwords.add_word(word, user)
 
 
