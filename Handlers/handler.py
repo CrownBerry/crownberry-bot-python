@@ -31,6 +31,7 @@ def cat_or_dog(bot, update):
 def topword_saving(bot, update):
     user = update.message.from_user.username
     message = update.message.text
+    message = ''.join(c for c in message if c.isalpha())
     for word in message.split():
         if len(word) > 2:
             config.topwords.add_word(word, user)
