@@ -23,12 +23,14 @@ def btc(bot, update, args):
     for i in ["btc", "bch", "eth", "xmr"]:
         prices[i] = coin_rate.get_rate(cur=i, cash=cash)
 
+    output = {"rur": "1 {0} = {1}{2}\n",
+              "usd": "1 {0} = {2}{1}\n"}
     message = "```\n"
     for price in prices:
         if prices[price] == 'None':
             message += "No information about {}\n".format(price.upper())
         else:
-            message += "1 {0} = {2}{1}\n".format(price.upper(), prices[price], cash_symbol)
+            message += output[cash].format(price.upper(), prices[price], cash_symbol)
     message += "```"
     bot.send_message(chat_id=update.message.chat_id,
                      text=message,
