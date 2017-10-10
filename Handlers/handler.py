@@ -10,12 +10,16 @@ def start(bot, update):
 def btc(bot, update):
     coin_rate = CoinRate()
     btc_price = coin_rate.get_rate(cur="btc")
-    bcc_price = coin_rate.get_rate(cur="bcc")
+    bch_price = coin_rate.get_rate(cur="bch")
+    xmr_price = coin_rate.get_rate(cur="xmr")
     eth_price = coin_rate.get_rate(cur="eth")
     bot.send_message(chat_id=update.message.chat_id,
-                     text="1 BTC = $" + btc_price + "\n" +
-                          "1 BCC = $" + bcc_price + "\n" +
-                          "1 ETH = $" + eth_price)
+                     text="```\n"+
+                          "1 BTC = $" + btc_price + "\n" +
+                          "1 BCH = $" + bch_price + "\n" +
+                          "1 XMR = $" + xmr_price + "\n" +
+                          "1 ETH = $" + eth_price + "\n```",
+                     parse_mode="markdown")
 
 
 def cat_or_dog(bot, update):
