@@ -7,19 +7,28 @@ def start(bot, update):
                      text="I'm bot and I can tell you current exchange rate of BTC, BCC, ETH v0.02")
 
 
-def btc(bot, update):
+def btc(bot, update, args):
     coin_rate = CoinRate()
 
+    try:
+        if args[0] in ["rub", "rur"]:
+            cash = "rur"
+            cash_symbol = "₽"
+        else:
+            raise
+    except:
+        cash = "usd"
+        cash_symbol = "$"
     prices = {}
     for i in ["btc", "bch", "eth", "xmr"]:
-        prices[i] = coin_rate.get_rate(cur=i)
+        prices[i] = coin_rate.get_rate(cur=i, cash=cash)
 
     message = "```\n"
     for price in prices:
         if prices[price] == 'None':
             message += "No information about {}\n".format(price.upper())
         else:
-            message += "1 {0} = ${1}\n".format(price.upper(), prices[price])
+            message += "1 {0} = {2}{1}\n".format(price.upper(), prices[price], cash_symbol)
     message += "```"
     bot.send_message(chat_id=update.message.chat_id,
                      text=message,

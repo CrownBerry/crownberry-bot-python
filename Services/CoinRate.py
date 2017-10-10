@@ -7,9 +7,9 @@ class CoinRate:
     def __init__(self):
         pass
 
-    def get_rate(self, cur: str) -> str:
+    def get_rate(self, cur: str, cash: str) -> str:
         try:
-            request = requests.get(self.URL_STRING + cur + "-usd")
+            request = requests.get(self.URL_STRING + cur + "-" + cash)
             response = request.json()
             rate = round(float(response['ticker']['price']), 2)
         except KeyError:

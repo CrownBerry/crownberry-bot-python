@@ -12,7 +12,7 @@ if __name__ == '__main__':
                         level=logging.INFO)
 
     start_handler = CommandHandler('start', Handlers.handler.start)
-    btc_handler = CommandHandler('btc', Handlers.handler.btc)
+    btc_handler = CommandHandler('btc', Handlers.handler.btc, pass_args=True)
     cod_handler = MessageHandler(Filters.photo, Handlers.handler.cat_or_dog)
     add_word_handler = MessageHandler(Filters.text, Handlers.handler.topword_saving)
     get_topword_handler = CommandHandler('topword', Handlers.handler.get_topword, pass_args=True)
