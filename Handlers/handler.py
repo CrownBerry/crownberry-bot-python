@@ -9,18 +9,22 @@ def start(bot, update):
 
 def btc(bot, update):
     coin_rate = CoinRate()
+
     prices = {}
-    for i in ["btc", "bcc", "eth"]:
+    for i in ["btc", "bch", "eth", "xmr"]:
         prices[i] = coin_rate.get_rate(cur=i)
 
-    message = ""
+    message = "```\n"
     for price in prices:
         if prices[price] == 'None':
             message += "No information about {}\n".format(price.upper())
         else:
             message += "1 {0} = ${1}\n".format(price.upper(), prices[price])
+    message += "```"
     bot.send_message(chat_id=update.message.chat_id,
-                     text=message)
+                     text=message,
+                     parse_mode="markdown")
+
 
 
 def cat_or_dog(bot, update):
